@@ -377,7 +377,7 @@ function Metric({label,value}){return <div className="metric"><div className="me
 function Analytics({apps}) {
   const byService=Object.entries(apps.reduce((a,x)=>(a[x.service]=(a[x.service]||0)+1,a),{}));
   const byStage=Object.entries(apps.reduce((a,x)=>(a[WORKFLOWS[x.kind][x.status]]=(a[WORKFLOWS[x.kind][x.status]]||0)+1,a),{}));
-  return <div className="grid grid-2"><div className="card"><h3>Requests by service</h3>{byService.map(([k,v])=><div key={k} style={{margin:"12px 0"}}><div className="small">{SERVICES[k].name} · {v}</div><div className="progress"><span style={{width:`${Math.max(8,v/apps.length*100)}%`}}/></div>)}</div><div className="card"><h3>Requests by stage</h3>{byStage.map(([k,v])=><div key={k} style={{display:"flex",justifyContent:"space-between",padding:"9px 0",borderBottom:"1px solid var(--line)"}}><span>{k}</span><b>{v}</b></div>)}</div></div>;
+  return <div className="grid grid-2"><div className="card"><h3>Requests by service</h3>{byService.map(([k,v])=><div key={k} style={{margin:"12px 0"}}><div className="small">{SERVICES[k].name} · {v}</div><div className="progress"><span style={{width:`${Math.max(8,v/apps.length*100)}%`}}/></div></div>)}</div><div className="card"><h3>Requests by stage</h3>{byStage.map(([k,v])=><div key={k} style={{display:"flex",justifyContent:"space-between",padding:"9px 0",borderBottom:"1px solid var(--line)"}}><span>{k}</span><b>{v}</b></div>)}</div></div>;
 }
 
 function AdminView({store,setStore,tab,setTab}) {
